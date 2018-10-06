@@ -20,12 +20,13 @@ public class Biseccionador {
         double fxM = f(xM);
         short contador = 1;
 
-        if (xI >= xD || xI == xD) {
-            System.out.println("Valores de entrada invalidos");
+        if ((fxI > 0 && fxD > 0) || ((fxI < 0 && fxD < 0))) {                    //Verifica si existe raiz entre xi y xd
+            System.out.println("Sin raíces en este intervalo");
             return;
         }
 
-        System.out.println("Valores iniciales: X izq= " + xI + "  X der= " + xD + " Error: " + eMax);
+        System.out.println("Valores iniciales: X izq= " + xI + "  X der= " + xD
+                + " Error: " + eMax);
 
         while (Math.abs(fxM) >= eMax) {
             System.out.println("\nIteracion #" + contador);
@@ -33,19 +34,17 @@ public class Biseccionador {
             System.out.println("F(X) izquierda= " + fxI);
             System.out.println("F(X) derecha= " + fxD);
             System.out.println("F(X) media= " + fxM);
+
             if (fxM * fxI > 0) {
                 xI = xM;
-                fxI = f(xI);
-                fxD = f(xD);
-                xM = xMedia(xI, xD);
-                fxM = f(xM);
             } else {
                 xD = xM;
-                fxI = f(xI);
-                fxD = f(xD);
-                xM = xMedia(xI, xD);
-                fxM = f(xM);
             }
+
+            fxI = f(xI);
+            fxD = f(xD);
+            xM = xMedia(xI, xD);
+            fxM = f(xM);
 
             contador++;
             System.out.println("Nueva X izq= " + xI);
@@ -57,11 +56,11 @@ public class Biseccionador {
 
     public double f(double x) {
         double fx;
-        fx = (double) (-12 * (Math.pow(x, 5))) - (6.4 * (Math.pow(x, 3))) + 12;
+        fx = (double) (-12 * (Math.pow(x, 5))) - (6.4 * (Math.pow(x, 3))) + 12; //metodo para calcular F(x)
         return fx;
     }
 
-    public double xMedia(double x1, double x2) {
+    public double xMedia(double x1, double x2) {                                //metodo para calcular xM (en biseccion)
         return ((x1 + x2) / 2);
     }
 
