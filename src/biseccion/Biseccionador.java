@@ -76,7 +76,9 @@ public class Biseccionador {
 
     private double f(double x) {
         double fx;
-        fx = (double) (-12 * (Math.pow(x, 5))) - (6.4 * (Math.pow(x, 3))) + 12; //metodo para calcular F(x)
+        //fx = (double) (-12 * (Math.pow(x, 5))) - (6.4 * (Math.pow(x, 3))) + 12; //metodo para calcular F(x)
+        fx = (double) (0.667 * (Math.pow(x, 3))) - (3.9 * (Math.pow(x, 2))) + (6.21 * (Math.pow(x, 1))) - 2.1;
+
         return fx;
     }
 
